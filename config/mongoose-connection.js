@@ -1,7 +1,11 @@
 const mongoose=require("mongoose");
+const config=require("config")
 
-mongoose.connect("mongodb://localhost:27017/scatchdb").then(()=>{
-  console.log("connected")
+const dbgr=require("debug")("development:mongoose");
+
+
+mongoose.connect(`${config.get("MONGODB_URI")}/scatchdb`).then(function(){
+  dbgr("connected")
 }).catch((err)=>{
   console.log(err);
 })
