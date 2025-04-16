@@ -1,9 +1,11 @@
 const mongoose=require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/scatchdb")
-
 const userSchema=mongoose.Schema({
-  fullName: String,
+  fullName: {
+    type:String,
+    minLength:3,
+    trim:true
+  },
   email: String,
   password: String,
   cart :{
